@@ -3,457 +3,83 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WordVault | Text Expander & Snippet Manager for Windows</title>
+    <title>WordVault | Text Expander & Snippet Manager</title>
     <style>
-        /* Global Framework Configuration resets */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body, html {
-            width: 100%;
-            background-color: #ffffff;
-            font-family: monospace;
-            padding: 24px;
-        }
-        .page-wrapper {
-            max-width: 1100px;
-            margin: 0 auto;
-        }
-        /* Structural Wireframe Border Styling Profile */
-        .wireframe-box {
-            border: 2px dashed #38bdf8;
-            background-color: rgba(56, 189, 248, 0.05);
-            color: #0284c7;
-            font-size: 11px;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 8px;
-            text-align: center;
-        }
-        /* Forced Side-by-Side Flex Rows on Desktop, Stacking on Mobile */
-        .split-row {
-            display: flex;
-            flex-direction: row; /* Default side-by-side */
-            gap: 20px;
-            margin-bottom: 20px;
-            width: 100%;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: #ffffff; color: #1e293b; padding: 24px; line-height: 1.5; }
+        .wrapper { max-width: 800px; margin: 0 auto; }
+        
+        /* Header */
+        header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid #f1f5f9; margin-bottom: 40px; }
+        .logo { font-size: 20px; font-weight: bold; color: #0a192f; }
+        .logo span { color: #00D9FF; }
+        
+        /* Hero Section */
+        .hero { text-align: center; margin-bottom: 60px; }
+        .tag { font-size: 11px; font-weight: bold; color: #2563eb; letter-spacing: 0.1em; text-transform: uppercase; }
+        h1 { font-size: 38px; font-weight: 800; color: #0a192f; margin: 8px 0 16px; }
+        .subtitle { font-size: 18px; color: #475569; margin-bottom: 24px; }
+        
+        /* Buttons */
+        .btn-group { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
+        .btn { display: inline-block; padding: 12px 24px; font-weight: bold; border-radius: 6px; text-decoration: none; font-size: 14px; }
+        .btn-primary { background: #2563eb; color: #ffffff; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2); }
+        .btn-secondary { border: 1px solid #cbd5e1; color: #2563eb; background: #ffffff; }
+        .requirement { font-size: 11px; color: #94a3b8; font-weight: 600; display: block; text-align: center; }
 
-        /* 📱 THE RESPONSIVE CHECK: Fixes everything for phones & tablets */
-        @media screen and (max-width: 1024px) {
-            body, html {
-                padding: 12px; /* Gives you slightly more screen space on small devices */
-            }
-            .split-row {
-                flex-direction: column; /* Flips side-by-side rows into clean vertical stacks */
-            }
-            /* Forces rigid widths to fill the phone screen beautifully */
-            .col-5, .col-7 {
-                width: 100% !important;
-            }
-            /* Targets any inline styles with fixed widths/heights and forces them to adapt */
-            div[style*="width: 41.6%"] {
-                width: 100% !important;
-                height: auto !important; /* Kills the 340px height limit so text can grow safely! */
-                padding-right: 0 !important;
-            }
-            /* Makes your navigation header links wrap or stack nicely if needed */
-            div[style*="height: 64px"] {
-                height: auto !important;
-                flex-direction: column;
-                gap: 15px;
-                padding: 15px 0 !important;
-            }
-            div[style*="gap: 40px"] {
-                flex-direction: column;
-                gap: 15px !important;
-                width: 100%;
-            }
-            div[style*="gap: 32px"] {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 16px !important;
-            }
-        }
+        /* Features */
+        .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 40px 0; }
+        .card { padding: 20px; border: 1px solid #e2e8f0; border-radius: 8px; background: #f8fafc; }
+        .card h3 { font-size: 14px; color: #0a192f; margin-bottom: 6px; }
+        .card p { font-size: 12px; color: #64748b; }
 
+        /* Footer */
+        footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid #e2e8f0; text-align: center; font-size: 11px; color: #94a3b8; }
+        footer a { color: #475569; text-decoration: none; margin: 0 10px; }
     </style>
 </head>
 <body>
 
-    <div class="page-wrapper">
+    <div class="wrapper">
+        <!-- Header -->
+        <header>
+            <div class="logo">Word<span>Vault</span></div>
+            <a href="mailto:mylesrussell.dev@gmail.com" style="font-size: 12px; color: #64748b; text-decoration: none;">Contact Support</a>
+        </header>
 
-                <!-- CONTAINER 1: Clean Right-Justified Navigation Header Bar -->
-        <div class="full-width-row">
-            <div style="width: 100%; height: 64px; background-color: #ffffff; border-bottom: 1px solid #f1f5f9; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; font-family: 'Segoe UI', -apple-system, sans-serif;">
-                
-                <!-- LEFT SIDE: WordVault Logo -->
-                <div style="font-weight: bold; font-size: 20px; tracking-tight: -0.025em; user-select: none;">
-                    <span style="color: #0a192f;">Word</span><span style="color: #00D9FF;">Vault</span>
-                </div>
-                
-                <!-- RIGHT SIDE PANEL: Nav Links and Button grouped together -->
-                <div style="display: flex; align-items: center; gap: 40px;">
-                    
-                    <!-- Right-Justified Navigation Links -->
-                    <div style="display: flex; gap: 32px; font-size: 14px; font-weight: 500;">
-                        <a href="#" style="color: #2563eb; text-decoration: none; font-weight: 600;">Home</a>
-                        <a href="#" style="color: #64748b; text-decoration: none;">WordVault</a>
-                        <a href="#" style="color: #64748b; text-decoration: none;">Projects</a>
-                        <a href="#" style="color: #64748b; text-decoration: none;">About</a>
-                        <a href="#" style="color: #64748b; text-decoration: none;">Contact</a>
-                    </div>
-                    
-                    <!-- Compact Top Download Button -->
-                    <div>
-                        <a href="#" style="background-color: #0a192f; color: #ffffff; text-decoration: none; font-size: 12px; font-weight: bold; padding: 10px 16px; border-radius: 6px;">Download Beta</a>
-                    </div>
-                    
-                </div>
-                
-            </div>
-        </div>
-
-
-                <!-- SPLIT ROW 1: Hero Presentation Section -->
-        <div class="split-row">
+        <!-- Hero Section -->
+        <section class="hero">
+            <span class="tag">Introducing WordVault 1.0</span>
+            <h1>Type it once. Never type it again.</h1>
+            <p class="subtitle">The simple, secure way to store and instantly access your text snippets, canned responses, and code directly from a floating desktop utility.</p>
             
-            <!-- CONTAINER 2: Left Side Hero Text, Action Buttons & Tagline -->
-            <div style="width: 41.6%; height: 340px; display: flex; flex-direction: column; justify-content: center; padding-right: 20px; font-family: 'Segoe UI', -apple-system, sans-serif;">
-                <span style="font-size: 11px; font-weight: bold; color: #2563eb; text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 8px; display: block;">INTRODUCING</span>
-                <h1 style="font-size: 42px; font-weight: 800; color: #0a192f; line-height: 1.1; letter-spacing: -0.02em; margin-bottom: 12px;">
-                    Word<span style="color: #00D9FF;">Vault</span>
-                </h1>
-                <p style="font-size: 24px; font-weight: 700; color: #1e293b; line-height: 1.2; margin-bottom: 16px;">
-                    Type it once.<br>Never type it again.
-                </p>
-                <p style="font-size: 14px; color: #64748b; line-height: 1.5; margin-bottom: 24px;">
-                    The simple, secure way to store and instantly access the text, code, prompts, and information you use every day.
-                </p>
-                
-                <!-- BUTTON ROW ARRAY -->
-                <div style="display: flex; gap: 12px; align-items: center; margin-bottom: 16px;">
-                    <!-- 1. THE PRIMARY BLUE DOWNLOAD BETA BUTTON WITH SYMBOL -->
-                    <a href="" style="display: inline-flex; align-items: center; gap: 8px; background-color: #2563eb; color: #ffffff; text-decoration: none; font-weight: bold; font-size: 14px; padding: 12px 24px; border-radius: 6px; box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);">
-                        <!-- SVG Down Arrow into U Tray -->
-                        <svg style="width: 16px; height: 16px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16v1a3 3 0 003 3h12a3 3 0 003-3v1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
-                        </svg>
-                        <span>Download Beta</span>
-                    </a>
-
-                    <!-- 2. THE OUTLINED WATCH DEMO BUTTON WITH PLAY ARROW -->
-                    <a href="#" style="display: inline-flex; align-items: center; gap: 6px; background-color: #ffffff; color: #2563eb; text-decoration: none; font-weight: bold; font-size: 14px; padding: 12px 24px; border-radius: 6px; border: 1px solid #cbd5e1;">
-                        <!-- SVG Play Arrow Triangle -->
-                        <svg style="width: 14px; height: 14px;" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path>
-                        </svg>
-                        <span>Watch Demo</span>
-                    </a>
-                </div>
-
-                <!-- 3. TAGLINE WITH SHIELD -->
-                <div style="display: flex; align-items: center; gap: 6px; font-size: 12px; color: #94a3b8; font-weight: 600;">
-                    <!-- SVG Shield Icon -->
-                    <svg style="width: 14px; height: 14px; color: #2563eb;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
-                    </svg>
-                    <span style="text-transform: capitalize; letter-spacing: 0.02em;">safe, secure, yours</span>
-                </div>
+            <div class="btn-group">
+                <a href="https://google.com" class="btn btn-primary">Download Free Beta</a>
+                <a href="mailto:mylesrussell.dev@gmail.com" class="btn btn-secondary">Request Feature</a>
             </div>
+            <span class="requirement">Windows 10 / 11 (64-bit Systems) · 100% Offline & Encrypted</span>
+        </section>
 
-            <!-- CONTAINER 3: Right Side Laptop App Preview Module -->
-            <div style="width: 58.4%; height: 340px; background-color: #0a192f; border-radius: 12px; display: flex; align-items: center; justify-content: center; overflow: hidden; relative: p-6; box-shadow: inset 0 0 40px rgba(0,217,255,0.05); border: 1px solid rgba(0,217,255,0.15);">
-                
-                <!-- Inner Dashboard Emulation (The crisp app mock over dark background) -->
-                <div style="width: 90%; background-color: #030712; border: 1px solid rgba(0, 217, 255, 0.25); border-radius: 8px; padding: 16px; font-family: monospace; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
-                    <!-- Frameless Header Mock -->
-                    <!-- App Inner Grid Split -->
-                    <div style="display: flex; gap: 12px; height: 160px;">
-                        <!-- Left Data Box -->
-                        <!-- Right List Box -->
-                    </div>
-                </div>
-
+        <!-- Core Value Strip -->
+        <section class="features">
+            <div class="card">
+                <h3>⚡ Instant Access</h3>
+                <p>Open the frameless system widget, click an entry, and insert text anywhere you are working instantly.</p>
             </div>
-
-        </div>
-
-
-                <!-- CONTAINER 4: Full-Width Core Headline & 5-Column Feature Panel -->
-        <div class="full-width-row" style="margin-top: 40px; margin-bottom: 40px; font-family: 'Segoe UI', -apple-system, sans-serif;">
-            <div style="width: 100%; padding: 48px 24px; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
-                
-                <!-- Headline -->
-                <div style="text-align: center; margin-bottom: 48px;">
-                    <h2 style="font-size: 36px; font-weight: 800; color: #0a192f; letter-spacing: -0.025em; line-height: 1.2;">
-                        Your words, code, and ideas. One click away.
-                    </h2>
-                </div>
-
-                <!-- 5-Column Horizontal Layout -->
-                <div style="display: flex; gap: 16px; width: 100%;">
-                    
-                    <!-- Feature 1: Instant Access -->
-                    <div style="width: 20%; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);">
-                        <div style="width: 36px; height: 36px; border-radius: 6px; background-color: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
-                            <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </div>
-                        <h3 style="font-size: 13px; font-weight: 700; color: #0a192f; margin-bottom: 6px;">Instant Access</h3>
-                        <p style="font-size: 11px; color: #64748b; line-height: 1.4;">Open the widget, click, and insert anywhere you work instantly.</p>
-                    </div>
-
-                    <!-- Feature 2: Organized Libraries -->
-                    <div style="width: 20%; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);">
-                        <div style="width: 36px; height: 36px; border-radius: 6px; background-color: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
-                            <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"></path></svg>
-                        </div>
-                        <h3 style="font-size: 13px; font-weight: 700; color: #0a192f; margin-bottom: 6px;">Organized Libraries</h3>
-                        <p style="font-size: 11px; color: #64748b; line-height: 1.4;">Create unlimited libraries and keep everything completely structured.</p>
-                    </div>
-
-                    <!-- Feature 3: More Than Text -->
-                    <div style="width: 20%; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);">
-                        <div style="width: 36px; height: 36px; border-radius: 6px; background-color: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
-                            <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"></path></svg>
-                        </div>
-                        <h3 style="font-size: 13px; font-weight: 700; color: #0a192f; margin-bottom: 6px;">More Than Text</h3>
-                        <p style="font-size: 11px; color: #64748b; line-height: 1.4;">Store raw text data, code metrics, dynamic strings, and workflow templates.</p>
-                    </div>
-
-                    <!-- Feature 4: Private & Secure -->
-                    <div style="width: 20%; background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);">
-                        <div style="width: 36px; height: 36px; border-radius: 6px; background-color: #eff6ff; color: #2563eb; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
-                            <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
-                        </div>
-                        <h3 style="font-size: 13px; font-weight: 700; color: #0a192f; margin-bottom: 6px;">Private & Secure</h3>
-                        <p style="font-size: 11px; color: #64748b; line-height: 1.4;">Password protect your data. Your database remains entirely localized.</p>
-                    </div>
-
-                    <!-- Feature 5: AI Library Builder (With Coming Soon Pill) -->
-                    <div style="width: 20%; background-color: #ffffff; border: 1px solid #bfdbfe; border-radius: 10px; padding: 20px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03); position: relative; overflow: hidden; background: linear-gradient(to bottom, #f8fafc, #ffffff);">
-                        <!-- Coming Soon Label -->
-                        <div style="position: absolute; top: 10px; right: 10px; background-color: #2563eb; color: #ffffff; font-size: 8px; font-weight: 800; text-transform: uppercase; padding: 2px 6px; border-radius: 20px; letter-spacing: 0.05em;">
-                            Coming Soon
-                        </div>
-                        <div style="width: 36px; height: 36px; border-radius: 6px; background-color: #dbeafe; color: #2563eb; display: flex; align-items: center; justify-content: center; margin-bottom: 14px;">
-                            <svg style="width: 18px; height: 18px;" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
-                        </div>
-                        <h3 style="font-size: 13px; font-weight: 700; color: #0a192f; margin-bottom: 6px;">AI Library Builder</h3>
-                        <p style="font-size: 11px; color: #64748b; line-height: 1.4;">Describe what you need. Let WordVault build configurations instantly.</p>
-                    </div>
-
-                </div>
+            <div class="card">
+                <h3>📁 Local-First Security</h3>
+                <p>Everything is encrypted locally using Fernet (AES-128) via PBKDF2. No data ever leaves your computer.</p>
             </div>
-        </div>
-
-
-        <!-- SPLIT ROW 2: Operational Systems Workspace Split -->
-        <div class="split-row">
-            <!-- CONTAINER 5: Left Live Workspace Dashboard Panel -->
-            <div class="wireframe-box col-7" style="height: 300px;">Container 5: Left Side Catalog Dashboard Split</div>
-            <!-- CONTAINER 6: Right Strategy List Processing Column -->
-            <div class="wireframe-box col-5" style="height: 300px;">Container 6: Right Side Flow Process Split</div>
-        </div>
-
-                        <!-- CONTAINER 7: Full-Width Row (Audience Block Left + Tight Security Card Right) -->
-        <div class="full-width-row" style="font-family: 'Segoe UI', -apple-system, sans-serif; margin-top: 48px; margin-bottom: 48px;">
-            <div style="width: 100%; display: flex; gap: 32px; align-items: flex-start;">
-                
-                <!-- LEFT ELEMENT: Built for Everyone 4-Column Grid Layout -->
-                <div style="width: 48%; display: flex; flex-direction: column;">
-                    <h2 style="font-size: 24px; font-weight: 800; color: #0a192f; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 4px;">
-                        Built for everyone.
-                    </h2>
-                    <h2 style="font-size: 24px; font-weight: 800; color: #0a192f; letter-spacing: -0.02em; line-height: 1.2; margin-bottom: 8px;">
-                        Useful for anything.
-                    </h2>
-                    <p style="font-size: 12px; color: #64748b; line-height: 1.5; margin-bottom: 24px;">
-                        From everyday tasks to professional workflows,<br>WordVault adapts to you.
-                    </p>
-                    
-                    <!-- 4 Columns Spanning Straight Across Natively -->
-                    <div style="display: flex; gap: 12px; width: 100%;">
-                        <!-- Profile 1: Developers -->
-                        <div style="width: 25%;">
-                            <span style="font-size: 16px; color: #2563eb; display: block; margin-bottom: 6px;">&lt;/&gt;</span>
-                            <h5 style="font-size: 12px; font-weight: 700; color: #0a192f; margin-bottom: 2px;">Developers</h5>
-                            <p style="font-size: 11px; color: #64748b; line-height: 1.3;">Store code snippets, queries, and debugging notes.</p>
-                        </div>
-                        <!-- Profile 2: Writers -->
-                        <div style="width: 25%;">
-                            <span style="font-size: 16px; display: block; margin-bottom: 6px;">✍️</span>
-                            <h5 style="font-size: 12px; font-weight: 700; color: #0a192f; margin-bottom: 2px;">Writers</h5>
-                            <p style="font-size: 11px; color: #64748b; line-height: 1.3;">Save templates, ideas, and content you reuse.</p>
-                        </div>
-                        <!-- Profile 3: Creators -->
-                        <div style="width: 25%;">
-                            <span style="font-size: 16px; display: block; margin-bottom: 6px;">🎨</span>
-                            <h5 style="font-size: 12px; font-weight: 700; color: #0a192f; margin-bottom: 2px;">Creators</h5>
-                            <p style="font-size: 11px; color: #64748b; line-height: 1.3;">Keep prompts, post ideas, assets, and inspiration.</p>
-                        </div>
-                        <!-- Profile 4: Professionals -->
-                        <div style="width: 25%;">
-                            <span style="font-size: 16px; display: block; margin-bottom: 6px;">💼</span>
-                            <h5 style="font-size: 12px; font-weight: 700; color: #0a192f; margin-bottom: 2px;">Professionals</h5>
-                            <p style="font-size: 11px; color: #64748b; line-height: 1.3;">Email responses, reports, templates, and more.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- RIGHT ELEMENT: Light Gray Data Security Card -->
-                <div style="width: 52%; background-color: #f8fafc; border: 1px solid #f1f5f9; border-radius: 12px; padding: 28px; display: flex; align-items: flex-start; justify-content: space-between; position: relative;">
-                    
-                    <!-- Left side of card: Text content and checkmarks -->
-                    <div style="width: 75%; display: flex; flex-direction: column;">
-                        
-                        <!-- Header with Green Shield Symbol -->
-                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
-                            <span style="font-size: 16px; color: #10b981;">
-                                <svg style="width: 18px; height: 18px; color: #10b981; fill: rgba(16,185,129,0.1);" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                </svg>
-                            </span>
-                            <h4 style="font-size: 16px; font-weight: 700; color: #0a192f; tracking-tight: -0.01em;">Your data stays yours.</h4>
-                        </div>
-                        
-                        <!-- Description Paragraph -->
-                        <p style="font-size: 11px; color: #64748b; line-height: 1.5; margin-bottom: 16px; font-weight: 500;">
-                            Everything in your vault is encrypted. Even if someone accesses the files, they'll see nothing but gibberish.
-                        </p>
-                        
-                        <!-- Strict 4 Checkmark List Array -->
-                        <div style="display: grid; grid-template-columns: 1fr; gap: 6px; font-size: 11px; color: #334155; font-weight: 600;">
-                            <div style="display: flex; align-items: center; gap: 6px;"><span style="color: #10b981; font-weight: bold;">✓</span> Password protected</div>
-                            <div style="display: flex; align-items: center; gap: 6px;"><span style="color: #10b981; font-weight: bold;">✓</span> Local encryption</div>
-                            <div style="display: flex; align-items: center; gap: 6px;"><span style="color: #10b981; font-weight: bold;">✓</span> No cloud required</div>
-                            <div style="display: flex; align-items: center; gap: 6px;"><span style="color: #10b981; font-weight: bold;">✓</span> You're always in control</div>
-                        </div>
-                    </div>
-
-                    <!-- Right side of card: Subtle Padlock Overlay Asset -->
-                    <div style="width: 20%; display: flex; justify-content: center; align-items: center; padding-top: 10px;">
-                        <div style="width: 64px; height: 64px; border-radius: 50%; background-color: rgba(16,185,129,0.04); border: 1px dashed rgba(16,185,129,0.2); display: flex; align-items: center; justify-content: center; font-size: 24px; user-select: none;">
-                            🔒
-                        </div>
-                    </div>
-
-                </div>
-                
+            <div class="card">
+                <h3>💼 Loaded Template Library</h3>
+                <p>Comes pre-packaged with a professional customer service script catalog so you can save time immediately.</p>
             </div>
-        </div>
+        </section>
 
-
-
-                                        <!-- CONTAINER 8: Sleek Full-Width Action Banner Panel with WV Logo -->
-        <div class="full-width-row" style="margin-top: 32px; margin-bottom: 32px; font-family: 'Segoe UI', -apple-system, sans-serif;">
-            <div style="width: 100%; background: #2563eb; border-radius: 12px; padding: 18px 40px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15);">
-                
-                <!-- LEFT SIDE: WV Logo Box + Correct Clean Header Text -->
-                <div style="display: flex; align-items: center; gap: 16px;">
-                    <!-- Stylized WV Brand Square Box Logo Asset -->
-                    <div style="width: 42px; height: 42px; background-color: #ffffff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 20px; color: #2563eb; user-select: none; flex-shrink: 0; font-family: sans-serif; letter-spacing: -0.05em; padding-right: 1px;">
-                        WV
-                    </div>
-                    
-                    <!-- Text Layout Details -->
-                    <div style="display: flex; flex-direction: column; gap: 1px;">
-                        <h2 style="font-size: 22px; font-weight: 700; color: #ffffff; letter-spacing: -0.01em; line-height: 1.2;">
-                            Ready to build your vault?
-                        </h2>
-                        <p style="font-size: 13px; color: #bfdbfe; font-weight: 500;">
-                            Join the beta and start saving time today.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- RIGHT SIDE: Tight Center-Stacked Action Asset Bundle -->
-                <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; width: 260px;">
-                    <!-- THE WORKING DOWNLOAD LINK -->
-                    <!-- Replace the '#' sign below with your real share link -->
-                    <a href="#" style="display: block; background-color: #ffffff; color: #2563eb; text-decoration: none; font-weight: 700; font-size: 13px; padding: 10px 0; border-radius: 6px; width: 100%; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
-                        Download WordVault Beta
-                    </a>
-                    
-                    <!-- System Framework Requirement Perfectly Centered Directly Below Button -->
-                    <span style="font-size: 10px; color: #93c5fd; font-weight: 600; text-align: center; width: 100%; display: block; white-space: nowrap; letter-spacing: 0.02em;">
-                        Windows 10 / 11 (64-bit Systems)
-                    </span>
-                </div>
-
-            </div>
-        </div>
-
-
-
-
-
-                                <!-- CONTAINER 9: Full-Width 4-Column Global System Footer Map -->
-        <div class="full-width-row" style="margin-top: 60px; font-family: 'Segoe UI', -apple-system, sans-serif;">
-            <footer style="width: 100%; background-color: #ffffff; border-top: 1px solid #e2e8f0; padding: 48px 24px 24px 24px; color: #64748b; font-size: 12px;">
-                
-                <!-- 4-Column Layout Array Grid Split with Extra Padding to Fix the Optical Illusion -->
-                <div style="display: flex; justify-content: space-between; gap: 40px; margin-bottom: 48px; width: 100%; padding-left: 12px; padding-right: 12px;">
-                    
-                    <!-- Column 1: Personal Branding Profile Details -->
-                    <div style="width: 25%; display: flex; flex-direction: column; gap: 4px;">
-                        <h5 style="color: #0a192f; font-weight: 800; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">MYLES RUSSELL</h5>
-                        <p style="color: #1e293b; font-weight: 600; font-size: 11px;">Python Developer · Software Creator</p>
-                        <p style="color: #64748b; line-height: 1.5; font-size: 11px; margin-top: 4px;">
-                            Building practical software tools that make work faster.
-                        </p>
-                    </div>
-
-                    <!-- Column 2: Active Portfolio Product Links -->
-                    <div style="width: 20%; display: flex; flex-direction: column; gap: 8px; padding-left: 8px;">
-                        <h5 style="color: #64748b; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">PROJECTS</h5>
-                        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 11px; font-weight: 500;">
-                            <a href="#" style="color: #1e293b; text-decoration: none; hover:color: #2563eb;">WordVault</a>
-                            <a href="#" style="color: #1e293b; text-decoration: none;">Wrong (Python)</a>
-                            <a href="#" style="color: #1e293b; text-decoration: none;">Analytics Portfolio</a>
-                        </div>
-                    </div>
-
-                    
-                    <div style="width: 20%; display: flex; flex-direction: column; gap: 8px; padding-left: 8px;">
-                        <h5 style="color: #64748b; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">CONNECT</h5>
-                        <div style="display: flex; flex-direction: column; gap: 8px; font-size: 11px; font-weight: 500;">
-                            <a href="https://github.com" style="color: #1e293b; text-decoration: none; display: flex; align-items: center; gap: 6px;">
-                                <span style="font-size: 12px;">🐱</span> <span>GitHub</span>
-                            </a>
-                            <a href="#" style="color: #1e293b; text-decoration: none; display: flex; align-items: center; gap: 6px;">
-                                <span style="font-size: 12px;">📺</span> <span>YouTube</span>
-                            </a>
-                            <a href="#" style="color: #1e293b; text-decoration: none; display: flex; align-items: center; gap: 6px;">
-                                <span style="font-size: 12px;">👥</span> <span>Facebook</span>
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- Column 4: Contact / Inbox Address Information -->
-                    <div style="width: 25%; display: flex; flex-direction: column; gap: 8px; padding-left: 8px;">
-                        <h5 style="color: #64748b; font-weight: 700; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px;">CONTACT</h5>
-                        <div style="font-size: 11px; font-weight: 500; display: flex; align-items: center; gap: 6px;">
-                            <span style="font-size: 12px;">✉️</span> 
-                            <a href="mailto:mylesrussell.dev@gmail.com" style="color: #1e293b; text-decoration: none;">mylesrussell.dev@gmail.com</a>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- Absolute Base Centered Copyright Footnote Row -->
-                <div style="border-top: 1px solid #f1f5f9; padding-top: 24px; text-align: center; color: #94a3b8; font-size: 10px; font-weight: 500; letter-spacing: 0.02em;">
-                    &copy; 2026 Myles Russell. All rights reserved.
-                </div>
-
-            </footer>
-        </div>
-
-
-
+        <!-- Minimal Base Footer -->
+        <footer>
+            <p>&copy; 2026 Myles Russell. All rights reserved. Built for creators, developers, and professionals.</p>
+        </footer>
     </div>
 
 </body>
