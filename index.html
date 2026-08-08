@@ -11,12 +11,13 @@
         
         /* Header */
         header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 24px; border-bottom: 1px solid #f1f5f9; margin-bottom: 40px; }
-        .logo { font-size: 20px; font-weight: bold; color: #0a192f; }
+        .logo { font-size: 20px; font-weight: bold; }
+        .logo a { text-decoration: none; color: #0a192f; }
         .logo span { color: #00D9FF; }
         
         /* Hero Section */
         .hero { text-align: center; margin-bottom: 60px; }
-        .tag { font-size: 11px; font-weight: bold; color: #2563eb; letter-spacing: 0.1em; text-transform: uppercase; }
+        .tag { font-size: 13px; font-weight: bold; color: #2563eb; letter-spacing: 0.1em; text-transform: uppercase; } /* Increased by 2px */
         h1 { font-size: 38px; font-weight: 800; color: #0a192f; margin: 8px 0 16px; }
         .subtitle { font-size: 18px; color: #475569; margin-bottom: 24px; }
         
@@ -35,7 +36,6 @@
 
         /* Footer */
         footer { margin-top: 80px; padding-top: 24px; border-top: 1px solid #e2e8f0; text-align: center; font-size: 11px; color: #94a3b8; }
-        footer a { color: #475569; text-decoration: none; margin: 0 10px; }
     </style>
 </head>
 <body>
@@ -43,19 +43,23 @@
     <div class="wrapper">
         <!-- Header -->
         <header>
-            <div class="logo">Word<span>Vault</span></div>
-            <a href="mailto:mylesrussell.dev@gmail.com" style="font-size: 12px; color: #64748b; text-decoration: none;">Contact Support</a>
+            <!-- 1) Logo with SEO link -->
+            <div class="logo"><a href="http://www.wordvaultpro.com">Word<span>Vault</span></a></div>
+            <!-- 2) Updated support email address -->
+            <a href="mailto:therealmylesrussell@gmail.com" style="font-size: 12px; color: #64748b; text-decoration: none;">Contact Support</a>
         </header>
 
         <!-- Hero Section -->
         <section class="hero">
-            <span class="tag">Introducing WordVault 1.0</span>
+            <!-- 3) Font size increased to 13px -->
+            <span class="tag">Introducing WordVault 1.0!</span>
             <h1>Type it once. Never type it again.</h1>
             <p class="subtitle">The simple, secure way to store and instantly access your text snippets, canned responses, and code directly from a floating desktop utility.</p>
             
             <div class="btn-group">
-                <a href="https://google.com" class="btn btn-primary">Download Free Beta</a>
-                <a href="mailto:mylesrussell.dev@gmail.com" class="btn btn-secondary">Request Feature</a>
+                <!-- 4) Button text updated to Trial and Demo templates -->
+                <a href="https://google.com" class="btn btn-primary">Download Free Trial</a>
+                <a href="#" class="btn btn-secondary">Play Demo</a>
             </div>
             <span class="requirement">Windows 10 / 11 (64-bit Systems) · 100% Offline & Encrypted</span>
         </section>
@@ -70,9 +74,11 @@
                 <h3>📁 Local-First Security</h3>
                 <p>Everything is encrypted locally using Fernet (AES-128) via PBKDF2. No data ever leaves your computer.</p>
             </div>
-            <div class="card">
-                <h3>💼 Loaded Template Library</h3>
-                <p>Comes pre-packaged with a professional customer service script catalog so you can save time immediately.</p>
+            <!-- Future subscription roadmap hook -->
+            <div class="card" style="border: 1px solid #bfdbfe; background: linear-gradient(to bottom, #f8fafc, #ffffff); position: relative;">
+                <span style="position: absolute; top: 12px; right: 12px; background: #2563eb; color: #ffffff; font-size: 9px; font-weight: bold; padding: 2px 6px; border-radius: 20px; text-transform: uppercase;">Coming in 2.0</span>
+                <h3>🤖 OpenAI Generation</h3>
+                <p>Describe what you want to say, and let built-in AI generate, rephrase, or expand your text library instantly.</p>
             </div>
         </section>
 
